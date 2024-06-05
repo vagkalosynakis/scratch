@@ -1,3 +1,9 @@
+# Instructions
+
+* `docker build -t [image name] .` to build the image from this dockerfile
+* `docker run -it --rm -p 8080:8080 [image name]` to run the image and map the 8080 ports.
+* Visiting the `http://localhot:8080` now, should show you `Hello roadrunner!`, meaning we have a basic working environment`
+
 # Basic PHP image `FROM scratch`
 
 ### Building base image
@@ -11,11 +17,9 @@
 3. Use the [`ADD` command](https://docs.docker.com/reference/dockerfile/#add) to extract the tarball inside the image
 4. Instruct the image to start an `sh` shell when it's starting
 
-<div style='color:red;'><b>Note:</b> using the ADD command with the remote url does NOT create a working image. Shell is missing. Download the file locally first.</div>
+<div style='color:red;'><b>Note:</b> using the ADD command with the remote url does NOT extract the tarball, so the shell is missing. Download the file locally first.</div>
 
 ```
 FROM scratch
 ADD alpine-minirootfs-3.20.0-x86_64.tar.gz /
-CMD [ "/bin/sh" ]
 ```
-
